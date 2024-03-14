@@ -4,7 +4,7 @@ import {config} from 'dotenv'
 import cors from 'cors'
 import productRoutes from './routes/productRoutes.js'
 import userRoutes from './routes/userRoutes.js'
-import adminRoute from './backend/routes/adminRoute.js'
+import adminRoute from './routes/adminRoute.js'
 import multer from 'multer'
 import  path  from "path";
 import {errorHandler} from './middleware/errorhandler.js'
