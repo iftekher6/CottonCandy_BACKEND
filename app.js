@@ -18,7 +18,7 @@ config({
   path: '.env'
 })
 
-const allowedOrigins = 'http://localhost:3000/'
+const allowedOrigins = 'https://candy-front-567l.vercel.app/'
 app.use(cors({
   origin : (origin, callback) =>{
     if(!origin || allowedOrigins.indexOf(origin) !== -1) {
