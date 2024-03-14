@@ -1,5 +1,5 @@
-import {app} from "../backend/app.js";
-import connectDB from "../backend/config/mongoose.js";
+import {app} from "./app.js";
+import connectDB from "./config/mongoose.js";
 import cloudinary from 'cloudinary'
 
 connectDB()
