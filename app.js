@@ -3,12 +3,15 @@ import {config} from 'dotenv'
 // dotenv.config()
 import cors from 'cors'
 import productRoutes from '../backend/routes/productRoutes.js'
+import router from "../backend/routes/productRoutes.js";
 import userRoutes from '../backend/routes/userRoutes.js'
 import adminRoute from '../backend/routes/adminRoute.js'
 import multer from 'multer'
 import  path  from "path";
 import {errorHandler} from './middleware/errorhandler.js'
 import cookieParser from "cookie-parser";
+
+
 
 
 
@@ -51,7 +54,7 @@ app.use(express.json())
 app.use(cookieParser())
 app.use(express.json())
 app.use(express.static('public'))
-app.use('/api/v1/products', upload.single('image'), productRoutes)
+app.use('/api/v1/products', upload.single('image'), router)
 app.use('/api/v1/users', userRoutes)
 app.use('/api/v1/admin', adminRoute)
 
