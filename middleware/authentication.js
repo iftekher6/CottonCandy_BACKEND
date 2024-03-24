@@ -10,7 +10,8 @@ export const isAuthenticated = (req,res,next) =>{
 });
 
 
-    jwt.verify(token, process.env.JWTSECRET_KEY,(err, user)=>{
+
+jwt.verify(token, process.env.JWTSECRET_KEY,(err, user)=>{
         if(err) throw new Error('Invalid User ')
 
         req.user = user
