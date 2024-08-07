@@ -4,7 +4,7 @@ const ProductSchema = mongoose.Schema({
    name : String,
    price : Number,
    description : String,
-   image : String,
+   image : [],
 },{
   timeStamps : true,
 })

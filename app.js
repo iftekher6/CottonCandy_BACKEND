@@ -19,9 +19,16 @@ export  const app = express()
 config({
   path: '.env'
 })
+const credentials = (req, res, next) => {
+  const origin = req.headers.origin;
+  if (allowedOrigins.includes(origin)) {
+      res.header('Access-Control-Allow-Credentials', true);
+  }
+  next();
+}
 
-const allowedOrigins = 'https://candy-front.vercel.app/'
-
+const allowedOrigins = 'http://localhost:3000/' | 'https://candy-front.vercel.app/'
+app.use(credentials)
 app.use(cors({
   origin : (origin, callback) =>{
     if(!origin || allowedOrigins.indexOf(origin) !== -1) {
@@ -32,6 +39,9 @@ app.use(cors({
   },
   methods: ['GET','POST','PUT','DELETE'],
   credentials: true,
+  optionsSuccessStatus: 200,
+
+
 }));
 
 //multer setUP
@@ -49,12 +59,12 @@ const storage = multer.diskStorage({
 const upload = multer ({ storage : storage})
 
 //Middlewares
-// app.use(cors());
+// app.use(express.urlencoded({ extended: false }));
 app.use(express.json())
 app.use(cookieParser())
-app.use(express.json())
+
 app.use(express.static('public'))
-app.use('/api/v1/products', upload.single('image'), productRoutes)
+app.use('/api/v1/products', upload.array('image'), productRoutes)
 app.use('/api/v1/users', userRoutes)
 app.use('/api/v1/admin', adminRoute)
 

@@ -38,7 +38,7 @@ export const loginAdmin = async(req,res)=>{
 
 export const createAdmin = async(req,res) => {
     try {
-        const {name, email , password} = req.body
+        const {email , password} = req.body
         const admin = await Admin.findOne({email})
         
         if(admin) {
@@ -48,7 +48,7 @@ export const createAdmin = async(req,res) => {
         
         const hashedPassword = await bycrypt.hash(password,10)
         const newAdmin = await Admin.create({
-            name, email , password : hashedPassword
+             email , password : hashedPassword
         })
     
         res.status(201).json(newAdmin)

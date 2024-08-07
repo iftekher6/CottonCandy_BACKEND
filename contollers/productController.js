@@ -13,6 +13,29 @@ export const getProduct = async (req,res)=>{
 
 }
 
+export const checkUserRole = (permission)=>{
+  return (req,res,next)=>{
+    const userRole = req.body.role
+    if(permission.includes(userRole)){
+      next()
+    }else{
+      return res.status(401).json('You are not Allowed. Sorry!')
+    }
+  }
+}
+
+export const paginatedProducts = async(req,res)=>{
+   const page = req.query.page || 1
+   const limit = req.query.limit || 3
+  
+   const skip = (page - 1) * limit
+   const products = await Product.find({}).limit(limit).skip(skip)
+
+   res.status(200).json({
+    pagination : products
+   })
+}
+
 export const createProduct = async (req, res) => {
     try {
       const { name, price, description } = req.body;
