@@ -11,7 +11,7 @@ cloudinary.v2.config({
     api_secret : process.env.CLOUDINARY_API_SECRET,
 })
 
-const port = process.env.PORT 
+const port = process.env.PORT | 8000
 
 app.listen(port, ()=>{
     console.log(`Server running at ${port}`)

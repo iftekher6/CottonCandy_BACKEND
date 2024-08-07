@@ -27,7 +27,7 @@ const credentials = (req, res, next) => {
   next();
 }
 
-const allowedOrigins = 'http://localhost:3000/' | 'https://candy-front.vercel.app/'
+const allowedOrigins = 'https://candy-front.vercel.app/'
 app.use(credentials)
 app.use(cors({
   origin : (origin, callback) =>{
