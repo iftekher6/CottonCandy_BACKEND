@@ -26,7 +26,7 @@ export const checkUserRole = (permission)=>{
 
 export const paginatedProducts = async(req,res)=>{
    const page = req.query.page || 1
-   const limit = req.query.limit || 3
+   const limit = req.query.limit || 5
   
    const skip = (page - 1) * limit
    const products = await Product.find({}).limit(limit).skip(skip)

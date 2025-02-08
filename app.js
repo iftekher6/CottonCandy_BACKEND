@@ -26,8 +26,9 @@ const credentials = (req, res, next) => {
   }
   next();
 }
-
-const allowedOrigins = 'https://candy-front.vercel.app/'
+// http://localhost:5173/
+console.log(process.env.Allowed_origin)
+const allowedOrigins = `${process.env.Allowed_origin}`
 app.use(credentials)
 app.use(cors({
   origin : (origin, callback) =>{
